@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Toko Buku Pesantren</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+  <header class="admin-navbar">
+    <div class="admin-brand">
+      <div class="admin-logo">📖</div>
+      <div>
+        <strong>Admin Toko Buku</strong>
+        <span>Pesantren</span>
+      </div>
+    </div>
+
+    <a href="index.html" class="store-link">← Lihat Toko</a>
+  </header>
+
+  <main class="admin-container">
+    <div class="page-heading">
+      <div>
+        <span>ADMIN PANEL</span>
+        <h1>Kelola Buku</h1>
+        <p>Tambahkan dan kelola buku digital, cetak, atau keduanya.</p>
+      </div>
+      <button id="addNewBookButton" class="primary-button">+ Tambah Buku</button>
+    </div>
+
+    <section class="stats">
+      <div class="stat-card">
+        <span>📚</span>
+        <div>
+          <small>Total Buku</small>
+          <strong id="totalBooks">0</strong>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <span>📦</span>
+        <div>
+          <small>Total Stok Cetak</small>
+          <strong id="totalStock">0</strong>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <span>💰</span>
+        <div>
+          <small>Harga Rata-rata</small>
+          <strong id="averagePrice">Rp0</strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="bookFormSection" class="form-section hidden">
+      <div class="section-title">
+        <div>
+          <span>FORM BUKU</span>
+          <h2 id="formTitle">Tambah Buku</h2>
+        </div>
+        <button id="cancelForm" class="close-form" type="button">×</button>
+      </div>
+
+      <form id="bookForm">
+        <input type="hidden" id="bookId">
+
+        <div class="form-grid">
+          <div class="cover-upload">
+            <div id="coverPreview" class="cover-preview">📖</div>
+
+            <label class="upload-button">
+              🖼️ Pilih Cover
+              <input type="file" id="bookImage" accept="image/*" hidden>
+            </label>
+
+            <small>JPG, PNG atau WEBP</small>
+          </div>
+
+          <div class="form-fields">
+            <label>
+              Judul Buku
+              <input id="bookTitle" type="text" placeholder="Contoh: Belajar Membaca Al-Qur'an" required>
+            </label>
+
+            <label>
+              Penulis
+              <input id="bookAuthor" type="text" placeholder="Nama penulis" required>
+            </label>
+
+            <label>
+              Jenis Produk
+              <select id="productType" required>
+                <option value="digital">Digital</option>
+                <option value="print">Cetak</option>
+                <option value="both">Digital + Cetak</option>
+              </select>
+            </label>
+
+            <div id="digitalFields" class="variant-box">
+              <div class="variant-title">💻 Produk Digital</div>
+
+              <label>
+                Harga Digital
+                <input id="digitalPrice" type="number" min="0" placeholder="25000">
+              </label>
+
+              <label>
+                Link / File Digital
+                <input id="digitalLink" type="url" placeholder="https://...">
+                <small class="field-help">
+                  Masukkan link download/akses file. Untuk file besar, gunakan penyimpanan seperti Google Drive.
+                </small>
+              </label>
+            </div>
+
+            <div id="printFields" class="variant-box">
+              <div class="variant-title">📦 Produk Cetak</div>
+
+              <div class="two-columns">
+                <label>
+                  Harga Cetak
+                  <input id="printPrice" type="number" min="0" placeholder="85000">
+                </label>
+
+                <label>
+                  Stok Cetak
+                  <input id="printStock" type="number" min="0" placeholder="10">
+                </label>
+              </div>
+            </div>
+
+            <label>
+              Kategori
+              <select id="bookCategory" required>
+                <option value="">Pilih kategori</option>
+                <option value="Al-Qur'an">Al-Qur'an</option>
+                <option value="Agama">Agama</option>
+                <option value="Pendidikan">Pendidikan</option>
+                <option value="Novel">Novel</option>
+                <option value="Motivasi">Motivasi</option>
+                <option value="Anak">Anak</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </label>
+
+            <label>
+              Deskripsi
+              <textarea id="bookDescription" rows="5" placeholder="Tulis deskripsi buku..."></textarea>
+            </label>
+
+            <div class="form-actions">
+              <button type="button" id="cancelFormBottom" class="secondary-button">Batal</button>
+              <button type="submit" class="primary-button">💾 Simpan Buku</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section class="books-section">
+      <div class="list-heading">
+        <div>
+          <span>KOLEKSI</span>
+          <h2>Daftar Buku</h2>
+        </div>
+
+        <div class="admin-search">
+          🔎
+          <input id="adminSearch" type="text" placeholder="Cari buku...">
+        </div>
+      </div>
+
+      <div id="adminBookList" class="admin-book-list"></div>
+    </section>
+  </main>
+
+  <div id="notification" class="notification"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

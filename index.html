@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Toko Buku Pesantren</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <header class="navbar">
+
+    <a href="#" class="brand">
+      <div class="brand-icon">📖</div>
+
+      <div>
+        <strong>Toko Buku Pesantren</strong>
+        <span>Belanja sambil membantu pesantren</span>
+      </div>
+    </a>
+
+    <div class="nav-actions">
+
+      <a href="#koleksi">
+        Koleksi
+      </a>
+
+      <a href="#tentang">
+        Tentang
+      </a>
+
+      <a href="admin.html" class="admin-link">
+        Admin
+      </a>
+
+      <button
+        id="cartButton"
+        class="cart-button"
+      >
+        🛒
+        <span>Keranjang</span>
+        <b id="cartCount">0</b>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="hero-label">
+        📚 TOKO BUKU PESANTREN
+      </div>
+
+      <h1>
+        Beli Buku,<br>
+        <span>Bantu Pesantren.</span>
+      </h1>
+
+      <p>
+        Setiap pembelian buku turut membantu
+        mendukung kegiatan dan kebutuhan
+        pesantren.
+      </p>
+
+      <a
+        href="#koleksi"
+        class="hero-button"
+      >
+        Lihat Koleksi Buku →
+      </a>
+
+    </div>
+
+    <div class="hero-decoration">
+      📚
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section
+    id="tentang"
+    class="about"
+  >
+
+    <div class="about-icon">
+      🕌
+    </div>
+
+    <div>
+
+      <span class="section-label">
+        TENTANG KAMI
+      </span>
+
+      <h2>
+        Belanja sekaligus ikut
+        mendukung pendidikan.
+      </h2>
+
+      <p>
+        Toko buku ini dibuat untuk membantu
+        pembiayaan kegiatan pesantren.
+        Dengan membeli buku di sini, kamu
+        tidak hanya mendapatkan buku,
+        tetapi juga ikut berkontribusi
+        mendukung keberlangsungan pendidikan
+        di pesantren.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- COLLECTION -->
+
+  <main
+    id="koleksi"
+    class="shop"
+  >
+
+    <div class="shop-heading">
+
+      <div>
+
+        <span class="section-label">
+          KOLEKSI BUKU
+        </span>
+
+        <h2>
+          Temukan Buku Pilihanmu
+        </h2>
+
+      </div>
+
+      <div class="search-box">
+
+        🔎
+
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Cari buku..."
+        >
+
+      </div>
+
+    </div>
+
+
+    <!-- CATEGORIES -->
+
+    <div
+      id="categoryList"
+      class="categories"
+    ></div>
+
+
+    <!-- BOOKS -->
+
+    <div
+      id="bookGrid"
+      class="book-grid"
+    ></div>
+
+  </main>
+
+
+  <!-- CART OVERLAY -->
+
+  <div
+    id="cartOverlay"
+    class="overlay"
+  ></div>
+
+
+  <!-- CART -->
+
+  <aside
+    id="cartPanel"
+    class="cart-panel"
+  >
+
+    <div class="cart-header">
+
+      <div>
+        <span class="section-label">
+          PESANAN
+        </span>
+
+        <h2>
+          Keranjang
+        </h2>
+      </div>
+
+      <button
+        id="closeCart"
+        class="close-button"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      id="cartItems"
+      class="cart-items"
+    ></div>
+
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+
+        <span>
+          Total
+        </span>
+
+        <strong id="cartTotal">
+          Rp0
+        </strong>
+
+      </div>
+
+      <button
+        id="checkoutButton"
+        class="checkout-button"
+      >
+        💬 Pesan via WhatsApp
+      </button>
+
+      <small>
+        Pesanan akan dikirim ke WhatsApp
+        untuk dikonfirmasi.
+      </small>
+
+    </div>
+
+  </aside>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div>
+
+      <strong>
+        📖 Toko Buku Pesantren
+      </strong>
+
+      <p>
+        Buku untuk ilmu, pembelian
+        untuk kebaikan.
+      </p>
+
+    </div>
+
+    <div>
+      © 2026 Toko Buku Pesantren
+    </div>
+
+  </footer>
+
+  <!-- CHECKOUT MODAL -->
+
+<div id="checkoutModal" class="checkout-modal">
+
+  <div class="checkout-box">
+
+    <div class="checkout-header">
+
+      <div>
+        <span class="section-label">
+          CHECKOUT
+        </span>
+
+        <h2>Data Pembeli</h2>
+      </div>
+
+      <button
+        id="closeCheckout"
+        class="close-button"
+        type="button"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <form id="checkoutForm">
+
+      <label>
+        Nama Lengkap
+        <input
+          id="customerName"
+          type="text"
+          placeholder="Masukkan nama lengkap"
+          required
+        >
+      </label>
+
+
+      <label>
+        Nomor WhatsApp
+        <input
+          id="customerPhone"
+          type="tel"
+          placeholder="08xxxxxxxxxx"
+          required
+        >
+      </label>
+
+
+      <label>
+        Pilihan Pengiriman
+
+        <select
+          id="deliveryMethod"
+          required
+        >
+
+          <option value="">
+            Pilih pengiriman
+          </option>
+
+          <option value="Ambil langsung">
+            🏫 Ambil langsung
+          </option>
+
+          <option value="Dikirim">
+            🚚 Dikirim
+          </option>
+
+        </select>
+
+      </label>
+
+
+      <label
+        id="addressGroup"
+        class="address-group"
+      >
+
+        Alamat Lengkap
+
+        <textarea
+          id="customerAddress"
+          rows="3"
+          placeholder="Nama jalan, nomor rumah, kecamatan, kota..."
+        ></textarea>
+
+      </label>
+
+
+      <label>
+
+        Catatan Pesanan
+
+        <textarea
+          id="customerNote"
+          rows="3"
+          placeholder="Contoh: Tolong dikirim sore hari."
+        ></textarea>
+
+      </label>
+
+
+      <div class="checkout-summary">
+
+        <div>
+          <span>
+            Total Buku
+          </span>
+
+          <strong id="checkoutBookCount">
+            0
+          </strong>
+        </div>
+
+
+        <div class="checkout-grand-total">
+
+          <span>
+            Total
+          </span>
+
+          <strong id="checkoutGrandTotal">
+            Rp0
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="checkout-submit"
+      >
+        💬 Lanjut ke WhatsApp
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
